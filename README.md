@@ -32,6 +32,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Preview
 
 **Sign In**
+
 <img width="598" alt="Screen Shot 2022-06-19 at 9 49 51 PM" src="https://user-images.githubusercontent.com/4160246/174487029-65e9e412-1565-4539-a141-d8bdd6f10de1.png">
 
 
