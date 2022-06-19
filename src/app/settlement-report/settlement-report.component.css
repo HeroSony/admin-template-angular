@@ -1,0 +1,49 @@
+mat-form-field {
+  width: 100%;
+  font-size: 12px;
+}
+
+.table-container{
+  max-width: 100%;
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+  /*table-layout: fixed;*/
+}
+
+th.mat-header-cell, td.mat-cell{
+  /*padding: 16px;*/
+
+}
+
+th.mat-header-cell{
+  /*white-space: pre-wrap;*/
+  word-break: break-word;
+  text-align: center;
+  font-weight: bold;
+}
+
+td.mat-cell{
+  /*text-align: right;*/
+  padding: 32px;
+  /*padding-left: 58px;*/
+  /*padding-right: 58px;*/
+}
+
+.mat-table-sticky-border-elem-right {
+  border-left: 1px solid #e0e0e0;
+}
+
+.mat-table-sticky-border-elem-left {
+  border-right: 1px solid #e0e0e0;
+}
+
+.mat-column-dateTime{
+  min-width: 10rem;
+}
+
+
+
+

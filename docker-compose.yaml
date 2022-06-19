@@ -1,0 +1,17 @@
+version: '3.1'
+services:
+
+  lotter_management_system_ui:
+    container_name: lotter_management_system_ui
+    build:
+      context: .
+      dockerfile: Dockerfile # Default Dockerfile
+    image: registry/lotter_management_system-ui:1.0.0
+    volumes:
+      - ~/logs:/root/logs
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/environment:/etc/environment:ro
+      - /etc/hosts:/etc/hosts:ro
+    ports:
+      - "80:80"

@@ -1,0 +1,347 @@
+<h1>Transaction Report</h1>
+
+
+<form id="searchForm" #formDirective="ngForm" [formGroup]="formTranModel" (ngSubmit)="onGenerateReport(formTranModel)" class="my-3">
+    <div class="row">
+
+        <div class="col-12 col-sm-4 col-md-3 ">
+            <mat-form-field appearance="outline">
+                <mat-label>Transaction Number</mat-label>
+                <input
+                  formControlName="transNumber"
+                  matInput [(ngModel)]='transactionNumber'
+
+                >
+            </mat-form-field>
+        </div>
+        <div class="col-12 col-sm-4 col-md-3 ">
+            <mat-form-field appearance="outline">
+                <mat-label>FT Transaction Number</mat-label>
+                <input formControlName="ftTransNumber" matInput [(ngModel)]='t24TransactionNumber'>
+            </mat-form-field>
+        </div>
+        <div class="col-12 col-sm-4 col-md-3 ">
+            <mat-form-field appearance="outline">
+                <mat-label>FAST Transaction Number</mat-label>
+                <input
+
+                  formControlName="fastTransNumber"
+                  matInput [(ngModel)]='fastTransactionNumber'
+
+                >
+
+
+            </mat-form-field>
+        </div>
+        <div class="col-12 col-sm-4 col-md-3 ">
+            <mat-form-field appearance="outline">
+                <mat-label>Terminal ID</mat-label>
+                <input formControlName="terminalId" matInput [(ngModel)]='terminalId'>
+            </mat-form-field>
+        </div>
+        <div class="col-12 col-sm-4 col-md-3 ">
+            <mat-form-field appearance="outline">
+                <mat-label>Customer</mat-label>
+                <input formControlName="customerId" matInput [(ngModel)]='customerAccountOrCardNumber'>
+            </mat-form-field>
+        </div>
+
+
+
+        <div class="col-12 col-sm-4 col-md-3 ">
+
+            <mat-form-field appearance="outline" class="w-75">
+                <mat-label>From Date Time</mat-label>
+                <input matInput [matDatepicker]="dateTimeFrom" [(ngModel)]='startDate' formControlName="startDate">
+                <mat-datepicker-toggle matSuffix [for]="dateTimeFrom"></mat-datepicker-toggle>
+                <mat-datepicker #dateTimeFrom disabled="false"></mat-datepicker>
+
+
+            </mat-form-field>
+            <!-- <mat-form-field appearance="outline" class="pl-2 w-50">
+                <mat-label>Time</mat-label>
+                <input #t1="matTimepicker" matInput matTimepicker #time1="ngModel" color="accent" [min]="minValue"
+                    [max]="maxValue" id="timepicker-example-1" mode="24h" ngModel placeholder="Please select time..."
+                    name="time-1" ormControlName="time" matTimepicker [minDate]="minValue" [maxDate]="maxValue"
+                    [strict]="false">
+                <mat-icon matSuffix (click)="t1.showDialog()">access_time</mat-icon>
+                <mat-error *ngIf="time1.touched && time1.invalid">Invalid Date</mat-error>
+            </mat-form-field> -->
+            <mat-form-field appearance="outline" class="pl-2 w-25">
+<!--                <mat-label>Time</mat-label>-->
+                <input formControlName="startTime" matTimepicker [strict]="false" [(ngModel)]='startTime'>
+            </mat-form-field>
+        </div>
+
+
+
+        <div class="col-12 col-sm-4 col-md-3 ">
+            <mat-form-field appearance="outline" class="w-75">
+                <mat-label>To Date Time</mat-label>
+                <input matInput [matDatepicker]="dateTimeTo" [(ngModel)]='endDate' formControlName="endDate">
+                <mat-datepicker-toggle matSuffix [for]="dateTimeTo"></mat-datepicker-toggle>
+                <mat-datepicker #dateTimeTo disabled="false"></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="pl-2 w-25">
+<!--                <mat-label>Time</mat-label>-->
+                <input formControlName="endTime" matTimepicker [strict]="false" [(ngModel)]='endTime'>
+            </mat-form-field>
+
+            <!-- <mat-form-field appearance="outline" class="pl-2 w-50">
+                <mat-label>Time</mat-label>
+                <input #t2="matTimepicker" matInput matTimepicker #time2="ngModel" color="accent" [min]="minValue"
+                    [max]="maxValue" id="timepicker-example-2" mode="24h" ngModel placeholder="Please select time..."
+                    name="time-2" required>
+                <mat-icon matSuffix (click)="t2.showDialog()">access_time</mat-icon>
+                <mat-error *ngIf="time2.touched && time2.invalid">Invalid Date</mat-error>
+            </mat-form-field> -->
+        </div>
+        <div class="col-12 col-sm-4 col-md-3 ">
+            <mat-form-field appearance="outline">
+                <mat-label>Currency</mat-label>
+                <mat-select formControlName="currencyType" [(ngModel)]='selectedCurrency'>
+                    <mat-option *ngFor="let type of currencyType" [value]="type.value">
+                        {{type.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+        </div>
+
+        <div class="col-12 col-sm-4 col-md-3 ">
+            <mat-form-field appearance="outline">
+                <mat-label>Transaction Type</mat-label>
+                <mat-select formControlName="transactionType" [(ngModel)]='selectedTransactionType'>
+                    <mat-option *ngFor="let type of transactionType" [value]="type.value">
+                        {{type.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+        </div>
+
+      <div class="col-12 col-sm-4 col-md-3 ">
+        <mat-form-field appearance="outline">
+          <mat-label>Transaction Main type</mat-label>
+          <mat-select formControlName="transactionMainType" [(ngModel)]='selectedTransactionMainType'>
+            <mat-option *ngFor="let type of transactionMainType" [value]="type.value">
+              {{type.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      </div>
+
+        <div class="col-12 col-sm-4 col-md-3 ">
+            <mat-form-field appearance="outline">
+                <mat-label>Channel Type</mat-label>
+                <mat-select formControlName="channelType" [(ngModel)]='selectedChannel'>
+
+                    <mat-option *ngFor="let type of channelType" [value]="type.value">
+                        {{type.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+        </div>
+
+        <div class="col-12 col-sm-4 col-md-3 ">
+            <mat-form-field appearance="outline">
+                <mat-label>Status</mat-label>
+                <mat-select formControlName="status" [(ngModel)]='status'>
+                    <mat-option *ngFor="let type of statusType" [value]="type.value">
+                        {{type.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+        </div>
+      <div class="col-12 col-sm-3 offset-sm-9">
+        <button form="searchForm" mat-flat-button dense color="primary"  class="btn-block"
+                style=" margin-top: 0.25rem;">
+          <mat-icon>search</mat-icon>
+        </button>
+      </div>
+    </div>
+</form>
+
+
+
+<!--<div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="flex-end">-->
+<!--    <button mat-stroked-button color="secondary" class="ml-20" style=" margin-top: 0.25rem;"-->
+<!--        (click)="resetForm(formDirective)">Reset</button>-->
+<!--    <button form="searchForm" mat-raised-button color="primary" class="ml-20"-->
+<!--        style=" margin-top: 0.25rem;">Search</button>-->
+
+<!--</div>-->
+<mat-divider ></mat-divider>
+<div class="" >
+    <mat-spinner style="margin:0 auto;" *ngIf="loaderService.isLoading | async" strokeWidth="3" [diameter]="50">
+    </mat-spinner>
+    <div *ngIf="!(loaderService.isLoading | async)">
+      <div class="row d-none" id="summarySection">
+        <div class="col-12 pt-3">
+          <h2>Summary</h2>
+        </div>
+        <div class="col-12 col-sm-4 my-3">
+          <span class="pr-4">Total Volume(<span class="text-success font-bold">Success</span>):</span>
+          <span class="font-weight-bold" style="font-size: 18px;">9</span>
+        </div>
+        <div class="col-12 col-sm-4 my-3">
+          <span class="pr-4">Total Volume(<span class="text-warning font-bold">Refund</span>):</span>
+          <span class="font-weight-bold" style="font-size: 18px;">9</span>
+        </div>
+
+        <div class="col-12 col-sm-4 my-3">
+          <span class="pr-4">Total Volume(<span class="text-danger font-bold">Failed</span>):</span>
+          <span class="font-weight-bold" style="font-size: 18px;">9</span>
+        </div>
+
+        <div class="col-12 col-sm-4 my-3">
+          <span class="pr-4">Total Amount(<span class="text-success font-bold">Success</span>):</span>
+          <span class="font-weight-bold" style="font-size: 18px;">100.00 USD</span>
+        </div>
+        <div class="col-12 col-sm-4 my-3">
+          <span class="pr-4">Total Amount(<span class="text-warning font-bold">Refund</span>):</span>
+          <span class="font-weight-bold" style="font-size: 18px;">25.00 USD</span>
+        </div>
+
+        <div class="col-12 col-sm-4 my-3">
+          <span class="pr-4">Total Amount(<span class="text-danger font-bold">Failed</span>):</span>
+          <span class="font-weight-bold" style="font-size: 18px;">30.00 USD</span>
+        </div>
+      </div>
+<!--        <mat-divider ></mat-divider>-->
+
+        <div fxLayout="row" class="mt-4 mb-4" fxLayoutGap="10px" fxLayoutAlign="flex-end" *ngIf="totalCount!=0">
+
+            <button mat-stroked-button color="primary" class="ml-20 right" style=" margin-top: 0.25rem;"
+                (click)="exportReport('pdf')">
+                <mat-icon>picture_as_pdf</mat-icon>
+                PDF
+            </button>
+            <button mat-stroked-button color="primary" class="ml-20 right" style=" margin-top: 0.25rem;"
+                (click)="exportReport('excel')">
+                <mat-icon>grid_on</mat-icon>
+                Excel
+            </button>
+
+        </div>
+        <div class="table-container mt-4">
+          <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)"
+          >
+
+            <ng-container matColumnDef="id" sticky >
+              <th mat-header-cell *matHeaderCellDef mat-sort-header > ID</th>
+              <td mat-cell  *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="createdAt" sticky >
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Created Date </th>
+              <td mat-cell *matCellDef="let element" >
+                {{element.createdAt | date: 'yyyy-MM-dd h:mm:ss'}}
+
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="transactionRefNo" >
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> TransRef No. </th>
+              <td mat-cell *matCellDef="let element"> {{element.transactionRefNo }} </td>
+            </ng-container>
+
+
+
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="senderBank">
+              <th mat-header-cell *matHeaderCellDef> Sender Bank</th>
+              <td mat-cell *matCellDef="let element"> {{element.senderBank}} </td>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="senderAccountNumber">
+              <th mat-header-cell *matHeaderCellDef> From Account </th>
+              <td mat-cell *matCellDef="let element"> {{element.senderAccountNumber}} </td>
+            </ng-container>
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="branchCode">
+              <th mat-header-cell *matHeaderCellDef> Branch Code </th>
+              <td mat-cell *matCellDef="let element"> {{element.branchCode}} </td>
+            </ng-container>
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="terminalId">
+              <th mat-header-cell *matHeaderCellDef> Terminal Id </th>
+              <td mat-cell *matCellDef="let element"> {{element.terminalId}} </td>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="receiverBank">
+              <th mat-header-cell *matHeaderCellDef> Receiver Bank </th>
+              <td mat-cell *matCellDef="let element"> {{element.receiverBank}} </td>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="receiverAccountNumber">
+              <th mat-header-cell *matHeaderCellDef> Receiver Account </th>
+              <td mat-cell *matCellDef="let element"> {{element.receiverAccountNumber}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="amount">
+              <th mat-header-cell *matHeaderCellDef> Amount </th>
+              <td mat-cell *matCellDef="let element"> {{element.amount | number}} </td>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="currency">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Currency </th>
+              <td mat-cell *matCellDef="let element"> {{element.currency}} </td>
+            </ng-container>
+            <ng-container matColumnDef="transactionMainType" sticky>
+
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Transaction Main Type </th>
+              <td mat-cell *matCellDef="let element">
+
+                <mat-chip-list>
+                  <mat-chip color="primary" selected > {{element.transactionMainType}}</mat-chip>
+                </mat-chip-list>
+              </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="transactionStatus" sticky>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Status </th>
+              <td mat-cell *matCellDef="let element" class="font-bold"
+                  [ngClass]="{'PENDING' : 'text-info', 'SUCCESS' : 'text-success', 'FAILED' : 'text-danger', 'REPOSTED': 'text-warning'}[element.transactionStatus]"
+              >
+                {{element.transactionStatus}}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="transactionFt" >
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> T24 TransRef No. </th>
+              <td mat-cell *matCellDef="let element"> {{element.transactionFt }} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="fastTransactionRefNo" >
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>FAST TransRef No. </th>
+              <td mat-cell *matCellDef="let element"> {{element.fastTransactionRefNo }} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            <tr class="mat-row text-center" *matNoDataRow>
+              <td class="mat-cell" colspan="9999">
+                No data matching the filter
+              </td>
+            </tr>
+
+          </table>
+        </div>
+
+    </div>
+
+    <mat-paginator #paginator [pageSize]="pageSize" [pageSizeOptions]="[15, 20]" showFirstLastButtons
+        [length]="totalCount" [pageIndex]="pageIndex" (page)="pageEvent = handlePage($event)">
+    </mat-paginator>
+
+</div>

@@ -1,0 +1,28 @@
+table {
+	width: 100%;
+	background: 'red';
+  }
+  
+  ::ng-deep.mat-dialog-container table.dialig-table {
+	width: 100%;
+	min-width: 500px;
+	padding-bottom: 20px;
+  }
+  
+  ::ng-deep.mat-dialog-container .dialig-table tr>th {
+	text-align: right;
+  }
+  
+  ::ng-deep.mat-dialog-container table.dialig-table tr>td {
+	text-align: left;
+	padding-top: 7px;
+	padding-bottom: 7px;
+  }
+
+  .switchOptionLabel, .switchOptionButton {
+	margin-right: 1rem;
+  }
+
+  .switchOptionBox {
+	  margin-bottom: 1rem;
+  }

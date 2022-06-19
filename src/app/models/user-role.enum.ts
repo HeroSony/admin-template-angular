@@ -1,0 +1,10 @@
+export enum UserRole {
+    ADMIN = 'ADMIN',
+    TELLER = 'TELLER',
+    TELLER_MANAGER = 'TELLER_MANAGER',
+    CCD_MAKER = 'CCD_MAKER',
+    CCD_CHECKER = 'CCD_CHECKER',
+    CALL_CENTER = 'CALL_CENTER',
+    OPERATION = 'OPERATION',
+    CBS = 'CBS'
+}

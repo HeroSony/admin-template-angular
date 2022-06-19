@@ -1,0 +1,106 @@
+<h1 mat-dialog-title>Cluster</h1>
+
+<form class="form" [formGroup]="submitForm">
+    <mat-dialog-content>
+        <div class="col box">
+            <mat-form-field class="w-100" appearance="outline">
+                <mat-label>Cluster Name</mat-label>
+                <input matInput formControlName="cluster_name" placeholder="Cluster Name" type="text">
+                <mat-error *ngIf="submitted && submitFormControl['cluster_name'].errors">
+                    Cluster Name cannot be empty.
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="col box">
+            <mat-form-field class="w-100" appearance="outline">
+                <mat-label>Trigger Rate</mat-label>
+                <input matInput formControlName="trigger_rate" placeholder="Trigger Rate" type="text">
+                <mat-error *ngIf="submitted && submitFormControl['trigger_rate'].errors">
+                    Trigger Rate cannot be empty.
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="col box">
+
+            <mat-form-field appearance="outline" class="w-50">
+                <mat-label>Start Date</mat-label>
+                <input matInput formControlName="date" placeholder="Open Date" [matDatepicker]="openDatePicker">
+                <mat-datepicker-toggle matSuffix [for]="openDatePicker"></mat-datepicker-toggle>
+                <mat-datepicker #openDatePicker disabled="false"></mat-datepicker>
+                <mat-error *ngIf="submitted && submitFormControl['date'].errors">
+                    Start Date cannot be empty.
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="pl-2 w-50">
+                <mat-label>Start Time</mat-label>
+                <input matInput formControlName="time" placeholder="Open Time" matTimepicker [strict]="true">
+                <mat-error *ngIf="submitted && submitFormControl['time'].errors">
+                    Start Time cannot be empty.
+                </mat-error>
+            </mat-form-field>
+
+        </div>
+
+        <div class="col box switchOptionBox">
+            <label id="trigger_switch" class="switchOptionLabel">Trigger Switch</label>
+            <mat-radio-group aria-labelledby="trigger_switch" formControlName="trigger_switch">
+                <mat-radio-button  class="switchOptionButton" *ngFor="let item of triggerSwitchOptions" [value]="item.value">
+                    {{item.viewValue}}
+                </mat-radio-button>
+            </mat-radio-group>
+        </div>
+
+        <div class="col box switchOptionBox">
+            <label id="game_1" class="switchOptionLabel">Game 1 </label>
+            <mat-radio-group aria-labelledby="game_1" formControlName="game_1">
+                <mat-radio-button  class="switchOptionButton" *ngFor="let item of triggerSwitchOptions" [value]="item.value">
+                    {{item.viewValue}}
+                </mat-radio-button>
+            </mat-radio-group>
+        </div>
+
+        <div class="col box switchOptionBox">
+            <label id="game_2" class="switchOptionLabel">Game 2 </label>
+            <mat-radio-group aria-labelledby="game_2" formControlName="game_2">
+                <mat-radio-button  class="switchOptionButton" *ngFor="let item of triggerSwitchOptions" [value]="item.value">
+                    {{item.viewValue}}
+                </mat-radio-button>
+            </mat-radio-group>
+        </div>
+
+        <div class="col box switchOptionBox">
+            <label id="game_3" class="switchOptionLabel">Game 3 </label>
+            <mat-radio-group aria-labelledby="game_3" formControlName="game_3">
+                <mat-radio-button  class="switchOptionButton" *ngFor="let item of triggerSwitchOptions" [value]="item.value">
+                    {{item.viewValue}}
+                </mat-radio-button>
+            </mat-radio-group>
+        </div>
+
+        <div class="col box switchOptionBox">
+            <label id="game_4" class="switchOptionLabel">Game 4 </label>
+            <mat-radio-group aria-labelledby="game_4" formControlName="game_4">
+                <mat-radio-button  class="switchOptionButton" *ngFor="let item of triggerSwitchOptions" [value]="item.value">
+                    {{item.viewValue}}
+                </mat-radio-button>
+            </mat-radio-group>
+        </div>
+        
+
+        
+
+
+    </mat-dialog-content>
+
+    <mat-dialog-actions align="end">
+        <div mat-dialog-actions align="end">
+            <button mat-button matDialogClose="no" (click)="onCloseDialog()"> Cancel </button>
+            <button mat-flat-button color="primary" class="ml-2" cdkFocusInitial (click)="onSubmit()">Save</button>
+
+        </div>
+    </mat-dialog-actions>
+
+</form>

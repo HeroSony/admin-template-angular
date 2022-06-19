@@ -1,0 +1,27 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background: #F5F5F5;
+}
+
+.font-bold{
+  font-weight: 500 !important;
+}
+
+
+/* customized material components */
+mat-chip{
+  font-size: 12px !important;
+}
+
+
+
+
+

@@ -1,0 +1,35 @@
+{
+    
+    "dashboard": {
+        "title": "Dashboard"
+    },
+    "cluster_management": {
+        "title": "Cluster Management",
+        "new_cluster": "New Cluster",
+        "cluster_name": "Cluster Name",
+        "trigger_rate": "Trigger Rate",
+        "trigger_switch": "Trigger Switch",
+        "start_time": "Start Time",
+        "game_1": "Game 1",
+        "game_2": "Game 2",
+        "game_3": "Game 3",
+        "game_4": "Game 4",
+        "created_at": "Created Date",
+        "cluster_detail": "Cluster Detail"
+    },
+    "administrator_log": {
+        "title": "Administrator Log"
+    },
+    "lottery_history": {
+        "title": "Lottery History"
+    },
+    "settings": {
+        "login_title": "Lottery Management System",
+        "login_username": "Username",
+        "login_password": "Password",
+        "login_button": "Sign In",
+        "profile": "Profile",
+        "login": "Log In",
+        "logout": "Log Out"
+    }
+}

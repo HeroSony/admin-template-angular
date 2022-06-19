@@ -1,0 +1,47 @@
+$text_color: #194C5D;
+
+.main-list {
+    width: 100%;
+    max-width: unset;
+    counter-reset: my-awesome-counter;
+    padding-left: 40px;
+    list-style: none;
+    margin: 10px 0px;
+}
+
+.main-list .list {
+    width: 100%;
+    color: $text_color;
+    margin: 0 0 0.5rem 0;
+    counter-increment: my-awesome-counter;
+    position: relative;
+}
+
+.main-list .list::before {
+    content: counter(my-awesome-counter, upper-roman);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    position: absolute;
+    --size: 30px;
+    left: calc(-1 * var(--size) - 10px);
+    line-height: var(--size);
+    width: var(--size);
+    height: var(--size);
+    top: -3px;
+    background: #194C5D;
+    border-radius: 50%;
+    text-align: center;
+    box-shadow: 1px 1px 0 #999;
+}
+
+.sub-list {
+    list-style-type: none;
+    padding-left: 0px;
+    margin: 10px 0px;
+    color: $text_color;
+}
+
+.child-list {
+    padding-left: 21px;
+}

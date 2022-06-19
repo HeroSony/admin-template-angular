@@ -1,0 +1,58 @@
+<div class="page-container">
+    <div class="header py-2">
+        <div class="left">
+            <button class="nav-button" (click)="screenWidth <= 767 ? sidenav.toggle() : toggleNav()" mat-icon-button>
+                <mat-icon [@transformIcon]="(hideText) ? 'hide' : 'show'">menu</mat-icon>
+                <mat-icon [@transformIcon]="(hideText) ? 'show' : 'hide'">menu</mat-icon>
+            </button>
+            <span class="header-title" id="header-title-bar">{{title}}</span>
+        </div>
+        <div class="right">
+
+            <button mat-button [matMenuTriggerFor]="menu">
+                <mat-icon>language</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="onChangeLanguage('cn')">
+                    <img src="./assets/images/china-flag-icon-64.png" class="flag-size" />
+                    CH
+                </button>
+                <button mat-menu-item (click)="onChangeLanguage('en')">
+                    <img src="./assets/images/united-kingdom-flag-icon-64.png" class="flag-size" />
+                    EN
+                </button>
+            </mat-menu>
+
+            <button mat-button style="color: white;" [matMenuTriggerFor]="menu_profile">
+                <mat-icon>account_circle</mat-icon>
+                {{getFullName()}}
+            </button>
+            <mat-menu #menu_profile="matMenu">
+                <button mat-menu-item (click)="onChangeProfile()">
+                    <mat-icon color="primary">account_box</mat-icon>
+                    Profile
+                </button>
+                <button mat-menu-item (click)="onLogout()">
+                    <mat-icon color="primary">exit_to_app</mat-icon>
+                    <!-- {{ 'top_bar.menu_user.logout' | translate }} -->
+                    Logout
+                </button>
+            </mat-menu>
+        </div>
+    </div>
+
+    <mat-sidenav-container autosize [style.margin-top.px]="1" class="my-sidenav-container">
+        <mat-sidenav [opened]="screenWidth > 767" [mode]="(screenWidth > 767) ? 'side' : 'over'" style="z-index: 3"
+            [style.min-width]="hideText ? 'auto' : '280px'" (opened)="hideText = false" fixedTopGap="56" #sidenav>
+            <app-menu-left (valueChange)="$event && screenWidth <= 767 ? sidenav.toggle() : ''"
+                [hideMenuBar]="hideMenuBar" [hideText]="hideText" [phone]="screenWidth <= 767"></app-menu-left>
+        </mat-sidenav>
+        <mat-sidenav-content [style.padding-top.px]="30" [style.padding-left.px]="30" [style.padding-right.px]="30">
+            <mat-card>
+                <router-outlet></router-outlet>
+
+            </mat-card>
+
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>

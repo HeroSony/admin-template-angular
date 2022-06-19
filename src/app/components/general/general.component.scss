@@ -1,0 +1,51 @@
+@import './../../../assets/scss/variables';
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  .header {
+    background-color: $main-text-color;
+
+    .left {
+      margin-top: 3px;
+
+      .nav-button {
+        position: relative;
+      }
+
+      .nav-button mat-icon {
+        position: absolute;
+        top: 8px;
+        left: 8px;
+      }
+    }
+
+    .right {
+      margin-top: 3px;
+    }
+  }
+
+  mat-sidenav-container {
+    flex: 1;
+
+    .show-navbar {
+      width: 340px !important;
+    }
+  }
+}
+
+.flag-size {
+  width: 22px;
+  vertical-align: middle;
+  margin-right: 12px;
+}
+
+mat-icon {
+  color: white;
+}

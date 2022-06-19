@@ -1,0 +1,40 @@
+<h2 mat-dialog-title>{{ 'cluster_management.cluster_detail' | translate}}</h2>
+<mat-dialog-content class="mat-typography" style="width: 560px; font-size: 15px;">
+    <div style="display: flex; justify-content: space-between; margin: 18px 0;">
+        <div>{{ 'cluster_management.cluster_name' | translate}}</div>
+        <div style="font-weight: 500 !important;" class="text-right ml-5">{{ data.cluster_name }}</div>
+    </div>
+    <div style="display: flex; justify-content: space-between; margin: 18px 0;">
+        <div>{{ 'cluster_management.trigger_rate' | translate}}</div>
+        <div style="font-weight: 500 !important;" class="text-right ml-5">{{ data.trigger_rate }}</div>
+    </div>
+    <div style="display: flex; justify-content: space-between; margin: 18px 0;">
+        <div>{{ 'cluster_management.trigger_switch' | translate}}</div>
+        <div style="font-weight: 500 !important;" class="text-right ml-5">{{ data.trigger_switch }}</div>
+    </div>
+    <div style="display: flex; justify-content: space-between; margin: 18px 0;">
+        <div>{{ 'cluster_management.start_time' | translate}}</div>
+        <div style="font-weight: 500 !important;" class="text-right ml-5">
+            {{ data.start_time | date: 'yyyy-MM-dd h:mm:ss' }}</div>
+    </div>
+    <div style="display: flex; justify-content: space-between; margin: 18px 0;">
+        <div>{{ 'cluster_management.game_1' | translate}}</div>
+        <div style="font-weight: 500 !important;" class="text-right ml-5">{{ data.game_1 }}</div>
+    </div>
+    <div style="display: flex; justify-content: space-between; margin: 18px 0;">
+        <div>{{ 'cluster_management.game_2' | translate}}</div>
+        <div style="font-weight: 500 !important;" class="text-right ml-5">{{ data.game_2 }}</div>
+    </div>
+    <div style="display: flex; justify-content: space-between; margin: 18px 0;">
+        <div>{{ 'cluster_management.game_3' | translate}}</div>
+        <div style="font-weight: 500 !important;" class="text-right ml-5">{{ data.game_3 }}</div>
+    </div>
+    <div style="display: flex; justify-content: space-between; margin: 18px 0;">
+        <div>{{ 'cluster_management.game_4' | translate}}</div>
+        <div style="font-weight: 500 !important;" class="text-right ml-5">{{ data.game_4 }}</div>
+    </div>
+    
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-stroked-button mat-dialog-close color="primary">CLOSE</button>
+</mat-dialog-actions>

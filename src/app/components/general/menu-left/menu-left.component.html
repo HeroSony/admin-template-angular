@@ -1,0 +1,32 @@
+<div *ngIf="!(hideText && phone)" class="menu-left-container">
+    <mat-toolbar>
+        <div class="mx-auto">
+            <img src="/assets/images/logo.png" alt="Lottery Managment System" height="50" [hidden]="hideText">
+            <img src="/assets/images/logo.png" alt="Lottery Managment System" height="25" [hidden]="!hideText">
+        </div>
+    </mat-toolbar>
+    <ng-template #menuList let-list>
+
+        <ul [class.hide-text]="hideText" @subItem>
+            <li *ngFor="let item of list" (click)="!item.children ? hideNavBar() : ''">
+                <a [class.sectionTitle]="item.isSectionTitle" matTooltipClass="app-tooltip"
+                    [matTooltipDisabled]="!hideText" matTooltipPosition="right" [matTooltip]="item.title"
+                    matRippleColor="rgba(45, 87, 119, .2)" [routerLinkActive]="item.exact ? '' : 'active'" matRipple
+                    (click)="menuClick(item)" [routerLink]="item.routerLink">
+                    <mat-icon *ngIf="item.icon">{{item.icon}}</mat-icon>
+                    <span class="nav-title">{{item.title}}</span>
+                    <span *ngIf="item.children" style="float: right">
+                        <mat-icon [class.collapses]="!!item.expanded" class="app-angle">keyboard_arrow_down</mat-icon>
+                    </span>
+                </a>
+                <ng-container *ngIf="item.children && item.expanded">
+                    <ng-container *ngTemplateOutlet="menuList; context: { $implicit: item.children }">
+                    </ng-container>
+                </ng-container>
+            </li>
+        </ul>
+    </ng-template>
+    <ng-container *ngTemplateOutlet="menuList; context: { $implicit: displayMenuItems }">
+    </ng-container>
+    <!--  <app-general></app-general>-->
+</div>
