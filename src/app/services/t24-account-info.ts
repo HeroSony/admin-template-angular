@@ -9,6 +9,6 @@ export class T24CustomerAccount {
 
     getInfo(playload: any) {
         return this.http.post(
-            `/api/v1/backoffice/amk/apim/customer-account-infos`, playload);
+            `/api/v1/`, playload);
     }
 }
